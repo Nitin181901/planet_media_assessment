@@ -13,14 +13,14 @@ class TasksController < ApplicationController
     end
   end
 
+  def show
+    render json: @task
+  end
+
   def index
 	  tasks = Task.page(params[:page]).per(10)
 	  render json: tasks
 	end
-
-  def show
-    render json: @task
-  end
 
   def update
     if @task.update(task_params)
